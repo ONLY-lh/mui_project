@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>开锁记录</title>
+    <link rel="stylesheet" href="css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+    <style type="text/css">
+    .checktime-box {
+        padding: 20px 10px;
+        background-color: #fff;
+    }
+
+    .unlock-list {
+        margin-top: 10px;
+    }
+
+    .portrait {
+        width: 50px;
+    }
+
+    .time-box {
+        width: 80px;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left action-back"></a>
+        <h1 class="mui-title">开锁记录</h1>
+    </header>
+    <div class="mui-content">
+        <div class="mui-clearfix checktime-box">
+            <span class="mui-pull-left">全部记录</span>
+            <button class="mui-pull-right checktime-btn">2017.11.16</button>
+        </div>
+        <ul class="mui-table-view unlock-list">
+            <li class="mui-table-view-cell unlock-item">
+                <div class="mui-pull-left info-box">
+                    <img src="images/portrait_01.jpg" class="portrait" />
+                    <div class="mui-inline">
+                        <p>指纹开锁</p>
+                        <p>开锁人：洪庆庆</p>
+                    </div>
+                </div>
+                <div class="mui-pull-right time-box">
+                    <p>2017.11.10 0:32:32</p>
+                </div>
+            </li>
+            <li class="mui-table-view-cell unlock-item">
+                <div class="mui-pull-left info-box">
+                    <img src="images/portrait_01.jpg" class="portrait" />
+                    <div class="mui-inline">
+                        <p>指纹开锁</p>
+                        <p>开锁人：洪庆庆</p>
+                    </div>
+                </div>
+                <div class="mui-pull-right time-box">
+                    <p>2017.11.10 0:32:32</p>
+                </div>
+            </li>
+            <li class="mui-table-view-cell unlock-item">
+                <div class="mui-pull-left info-box">
+                    <img src="images/portrait_01.jpg" class="portrait" />
+                    <div class="mui-inline">
+                        <p>指纹开锁</p>
+                        <p>开锁人：洪庆庆</p>
+                    </div>
+                </div>
+                <div class="mui-pull-right time-box">
+                    <p>2017.11.10 0:32:32</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="js/mui.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/lh.js"></script>
+    <script>
+    // mui初始化
+    mui.init({
+        swipeBack: true
+    });
+
+    // 设置默认时间为当前时间
+    var checktimeBtn = document.querySelector('.checktime-btn');
+    checktimeBtn.innerHTML = lh.timeFormate_date(new Date(), '.');
+
+    // 时间查询
+    checktimeBtn.addEventListener('tap', function() {
+        var _self = this;
+        var options = {
+            type: 'date'
+        };
+        _self.picker = new mui.DtPicker(options);
+        _self.picker.show(function(res) {
+            _self.innerHTML = res.text;
+            _self.picker.dispose();
+            _self.picker = null;
+        });
+    });
+    </script>
+</body>
+
+</html>

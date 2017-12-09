@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>授权分享</title>
+    <link rel="stylesheet" href="css/mui.min.css" />
+    <link rel="stylesheet" href="css/mui.picker.min.css" />
+    <style type="text/css">
+    .portrait-box {
+        width: 100%;
+        height: 250px;
+        background-color: #ddd;
+        position: relative;
+    }
+
+    .portrait {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #666;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    }
+
+    .checktime {
+        width: 150px;
+    }
+
+    .manage {
+        margin: 50px auto;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+        <h1 class="mui-title">授权分享</h1>
+    </header>
+    <div class="mui-content">
+        <div class="portrait-box">
+            <div class="portrait"></div>
+        </div>
+        <div class="mui-table-view impower-box">
+            <div class="mui-table-view-cell begin">
+                <span>授权开始时间</span>
+                <button class="mui-pull-right checktime" id="impower-begin">开始时间</button>
+            </div>
+            <div class="mui-table-view-cell end">
+                <span>授权结束时间</span>
+                <button class="mui-pull-right checktime" id="impower-end">请选择结束时间</button>
+            </div>
+        </div>
+        <div class="manage">
+            <input type="button" id="confirm-impower" value="确认授权" />
+        </div>
+    </div>
+    <script src="js/mui.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/lh.js"></script>
+    <script>
+    // mui初始化
+    mui.init({
+        swipeBack: true
+    });
+
+    // 设置授权开始时间（当天）
+    var impowerBegin = document.getElementById('impower-begin');
+    impowerBegin.innerHTML = lh.timeFormate_date(new Date());
+
+    /*// 选择时间
+    var impowerEnd_beginDate, impowerBegin_endDate;
+    mui('.impower-box').on('tap', '.checktime', function() {
+        var _self = this;
+        var options = {
+            type: 'date',
+            beginDate: new Date()
+        };
+        var id = this.getAttribute('id');
+        if (id === 'impower-begin') { //开始时间
+            if (typeof impowerBegin_endDate !== 'undefined') {
+                options.endDate = new Date(impowerBegin_endDate);
+            }
+        } else if (id === 'impower-end') { //结束时间
+            if (typeof impowerEnd_beginDate !== 'undefined') {
+                options.beginDate = new Date(impowerEnd_beginDate);
+            }
+        }
+        _self.picker = new mui.DtPicker(options);
+        _self.picker.show(function(res) {
+            _self.innerHTML = res.text;
+            if (id === 'impower-begin') { //开始时间
+                impowerEnd_beginDate = res.text;
+            } else if (id === 'impower-end') { //结束时间
+                impowerBegin_endDate = res.text;
+            }
+            _self.picker.dispose();
+            _self.picker = null;
+        });
+    })*/
+
+    // 选择开始时间
+    var impowerEnd_beginDate, impowerBegin_endDate; //结束时间的开始时间，开始时间的结束时间
+    document.getElementById('impower-begin').addEventListener('tap', function() {
+        var _self = this;
+        var options = {
+            type: 'date',
+            beginDate: new Date()
+        };
+        if (typeof impowerBegin_endDate !== 'undefined') {
+            options.endDate = new Date(impowerBegin_endDate);
+        }
+        _self.picker = new mui.DtPicker(options);
+        _self.picker.show(function(res) {
+            _self.innerHTML = res.text;
+            impowerEnd_beginDate = res.text;
+            _self.picker.dispose();
+            _self.picker = null;
+        });
+    });
+    // 选择结束时间
+    document.getElementById('impower-end').addEventListener('tap', function() {
+        var _self = this;
+        var options = {
+            type: 'date',
+            beginDate: new Date()
+        };
+        if (typeof impowerEnd_beginDate !== 'undefined') {
+            options.beginDate = new Date(impowerEnd_beginDate);
+        }
+        _self.picker = new mui.DtPicker(options);
+        _self.picker.show(function(res) {
+            _self.innerHTML = res.text;
+            impowerBegin_endDate = res.text;
+            _self.picker.dispose();
+            _self.picker = null;
+        });
+    });
+
+    // 确认授权
+    var reg_password = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/; //6-20位数字或字母密码
+    var confirmImpower = document.getElementById('confirm-impower');
+    var impowerEnd = document.getElementById('impower-end');
+    confirmImpower.addEventListener('tap', function(e) {
+        var endDefault = '请选择结束时间';
+        if (impowerEnd.innerHTML == endDefault) { //结束时间未选
+            mui.toast('请选择结束的时间');
+        } else { //结束时间已选
+            e.detail.gesture.preventDefault();
+            var btnArray = ['取消', '确定'];
+            mui.prompt('', '请输入账号登录密码', '输入密码', btnArray, function(e) {
+                if (e.index === 1) { //确定
+                    var password = e.value;
+                    if (reg_password.test(password)) {
+                        mui.alert('您已授权“洪庆庆 1381381388【简爱】管理员 ”对【典匠锁】的使用权限，有效期 2017-11-02至2017-11-05；', '授权消息', function(e) {
+                            mui.toast('授权成功');
+                            setTimeout(function() {
+                                window.location.href = 'impower-manage.html';
+                            }, 1000)
+                        });
+                    } else {
+                        mui.toast('请输入6-20位数字或字母密码');
+                    }
+                }
+            });
+        }
+
+    });
+    </script>
+</body>
+
+</html>

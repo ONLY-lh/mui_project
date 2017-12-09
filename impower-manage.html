@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>授权管理</title>
+    <link rel="stylesheet" href="css/mui.min.css" />
+    <style type="text/css">
+    .phone,
+    .time {
+        text-align: right;
+    }
+
+    .below {
+        text-align: right;
+        padding-top: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+        <h1 class="mui-title">授权管理</h1>
+    </header>
+    <div class="mui-content">
+        <ul class="mui-table-view impower-list">
+            <li class="mui-table-view-cell impower-item" data-id="0">
+                <div class="mui-clearfix above">
+                    <div class="mui-pull-left mui-inline name">
+                        <h4>洪庆庆</h4>
+                    </div>
+                    <div class="mui-pull-right mui-inline phoneAndTime">
+                        <p class="phone">
+                            <span class="mui-icon mui-icon-phone"></span>
+                            <a href="tel:18768120467">18768120467</a>
+                        </p>
+                        <p>2017-11-07 至 2017-11-10</p>
+                    </div>
+                </div>
+                <div class="below">
+                    <button class="relieve-impower">解除授权</button>
+                </div>
+            </li>
+            <li class="mui-table-view-cell impower-item" data-id="1">
+                <div class="mui-clearfix above">
+                    <div class="mui-pull-left mui-inline name">
+                        <h4>洪庆庆</h4>
+                    </div>
+                    <div class="mui-pull-right mui-inline phoneAndTime">
+                        <p class="phone">
+                            <span class="mui-icon mui-icon-phone"></span>
+                            <a href="tel:18768120467">18768120467</a>
+                        </p>
+                        <p>2017-11-07 至 2017-11-10</p>
+                    </div>
+                </div>
+                <div class="below">
+                    <button class="relieve-impower">解除授权</button>
+                </div>
+            </li>
+            <li class="mui-table-view-cell impower-item" data-id="0">
+                <div class="mui-clearfix above">
+                    <div class="mui-pull-left mui-inline name">
+                        <h4>洪庆庆</h4>
+                    </div>
+                    <div class="mui-pull-right mui-inline phoneAndTime">
+                        <p class="phone">
+                            <span class="mui-icon mui-icon-phone"></span>
+                            <a href="tel:18768120467">18768120467</a>
+                        </p>
+                        <p>2017-11-07 至 2017-11-10</p>
+                    </div>
+                </div>
+                <div class="below">
+                    <button class="relieve-impower">解除授权</button>
+                </div>
+            </li>
+            <li class="mui-table-view-cell impower-item" data-id="2">
+                <div class="mui-clearfix above">
+                    <div class="mui-pull-left mui-inline name">
+                        <h4>洪庆庆</h4>
+                    </div>
+                    <div class="mui-pull-right mui-inline phoneAndTime">
+                        <p class="phone">
+                            <span class="mui-icon mui-icon-phone"></span>
+                            <a href="tel:18768120467">18768120467</a>
+                        </p>
+                        <p>2017-11-07 至 2017-11-10</p>
+                    </div>
+                </div>
+                <div class="below">
+                    <button class="relieve-impower">解除授权</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="js/mui.js"></script>
+    <script>
+    // mui初始化
+    mui.init({
+        swipeBack: true
+    });
+
+    // 解除授权
+    mui('.impower-list').on('tap', '.relieve-impower', function() {
+        var id = this.parentNode.parentNode.getAttribute('data-id');
+        var btnArray = ['取消', '确定'];
+        mui.confirm('您即将解除“洪庆庆 1381381388【简爱】管理员 ”对【典匠锁】的使用权限。解除后，对方将无此门锁使用权限。', '解除授权', btnArray, function(e) {
+            if (e.index === 1) { //确定
+                mui.prompt('', '请输入账号密码', '输入密码', btnArray, function(e) {
+                    if (e.index === 1) { //确定
+                        var password = e.value;
+                    }
+                });
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>

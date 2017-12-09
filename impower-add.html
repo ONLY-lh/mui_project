@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>添加授权</title>
+    <link rel="stylesheet" href="css/mui.min.css" />
+    <style type="text/css">
+    .manage {
+        margin: 100px auto;
+        text-align: center;
+    }
+
+    #add-impower {
+        width: 80px;
+        height: 80px;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+        <h1 class="mui-title">添加授权</h1>
+    </header>
+    <div class="mui-content">
+        <div class="manage">
+            <input type="button" id="add-impower" value="+" />
+        </div>
+    </div>
+    <script src="js/mui.js"></script>
+    <script src="js/lh.js"></script>
+    <script>
+    // mui初始化
+    mui.init({
+        swipeBack: true
+    });
+
+    // 添加授权
+    document.getElementById('add-impower').addEventListener('tap', function() {
+        window.location.href = 'impower-select-person.html';
+    });
+
+    /*var now = new Date();
+    var now_timestamp = now.getTime();
+    var str = new Date(now_timestamp);
+    console.log(str)
+    var first = str.toLocaleDateString().replace(/\//g, '-'); //年月日
+    var second = str.toLocaleTimeString(); //时分秒
+    console.log(first)
+    console.log(second)*/
+
+    // console.log(lh.timeFormate(new Date().getTime()))
+    // console.log(lh.timeFormate(new Date()))
+    console.log(lh.timeFormate_time(new Date()))
+    </script>
+</body>
+
+</html>

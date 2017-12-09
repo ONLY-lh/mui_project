@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>添加授权</title>
+    <link rel="stylesheet" href="css/mui.min.css" />
+    <style type="text/css">
+    .portrait {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #333;
+    }
+
+    .mui-table-view-radio .mui-table-view-cell {
+        padding-right: 15px;
+    }
+
+    .manage {
+        margin: 50px auto;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left mui-action-back"></a>
+        <h1 class="mui-title">选择人员</h1>
+        <a href="javascript:;" class="mui-icon mui-pull-right">+</a>
+    </header>
+    <div class="mui-content">
+        <ul class="mui-table-view mui-table-view-radio user-list">
+            <li class="mui-table-view-cell mui-radio user-item" data-id="0">
+                <label>
+                    <div class="mui-inline portrait"></div>
+                    <div class="mui-inline role">
+                        <h4>洪庆庆</h4>
+                        <span>业主</span>
+                    </div>
+                    <div class="mui-inline phone">
+                        <span class="mui-icon mui-icon-phone"></span>
+                        <span>18768120467</span>
+                    </div>
+                </label>
+                <input name="person" type="radio" />
+            </li>
+            <li class="mui-table-view-cell mui-radio user-item" data-id="1">
+                <label>
+                    <div class="mui-inline portrait"></div>
+                    <div class="mui-inline role">
+                        <h4>洪庆庆</h4>
+                        <span>业主</span>
+                    </div>
+                    <div class="mui-inline phone">
+                        <span class="mui-icon mui-icon-phone"></span>
+                        <span>18768120467</span>
+                    </div>
+                </label>
+                <input name="person" type="radio" />
+            </li>
+            <li class="mui-table-view-cell mui-radio user-item" data-id="2">
+                <label>
+                    <div class="mui-inline portrait"></div>
+                    <div class="mui-inline role">
+                        <h4>洪庆庆</h4>
+                        <span>业主</span>
+                    </div>
+                    <div class="mui-inline phone">
+                        <span class="mui-icon mui-icon-phone"></span>
+                        <span>18768120467</span>
+                    </div>
+                </label>
+                <input name="person" type="radio" />
+            </li>
+        </ul>
+        <div class="manage">
+            <input type="button" value="确认" id="confirm" />
+        </div>
+    </div>
+    <script src="js/mui.js"></script>
+    <script>
+    // mui初始化
+    mui.init({
+        swipeBack: true
+    });
+
+    //确认
+    var confirm = document.getElementById('confirm');
+    confirm.addEventListener('tap', function() {
+        var id;
+        mui('.user-item').each(function(i, el) {
+            if (el.lastElementChild.checked) {
+                id = el.getAttribute('data-id');
+            }
+        });
+        if (typeof id !== 'undefined') {
+            window.location.href = 'impower-confirm.html?id=' + id;
+        }
+    });
+    </script>
+</body>
+
+</html>

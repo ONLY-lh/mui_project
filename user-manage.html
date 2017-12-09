@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>用户管理</title>
+    <link rel="stylesheet" href="css/mui.min.css" />
+    <style type="text/css">
+    .portrait {
+        width: 50px;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left action-back"></a>
+        <h1 class="mui-title">用户管理</h1>
+    </header>
+    <div class="mui-content">
+        <ul class="mui-table-view user-list">
+            <li class="mui-table-view-cell user-item">
+                <div class="mui-pull-left info-box">
+                    <img src="images/portrait_01.jpg" class="portrait" />
+                    <div class="mui-inline">
+                        <h5>洪庆庆</h5>
+                        <p>ID:221 IC卡开锁</p>
+                    </div>
+                </div>
+                <div class="mui-pull-right edit-box">
+                    <span class="mui-icon mui-icon-gear edit-btn"></span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell user-item">
+                <div class="mui-pull-left info-box">
+                    <img src="images/portrait_01.jpg" class="portrait" />
+                    <div class="mui-inline">
+                        <h5>洪庆庆</h5>
+                        <p>ID:221 IC卡开锁</p>
+                    </div>
+                </div>
+                <div class="mui-pull-right edit-box">
+                    <span class="mui-icon mui-icon-gear edit-btn"></span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell user-item">
+                <div class="mui-pull-left info-box">
+                    <img src="images/portrait_01.jpg" class="portrait" />
+                    <div class="mui-inline">
+                        <h5>洪庆庆</h5>
+                        <p>ID:221 IC卡开锁</p>
+                    </div>
+                </div>
+                <div class="mui-pull-right edit-box">
+                    <span class="mui-icon mui-icon-gear edit-btn"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="js/mui.js"></script>
+    <script src="js/lh.js"></script>
+    <script>
+    mui('.user-list').on('tap', '.edit-btn', function() {
+        var btnArray = ['确定', '取消'];
+        mui.prompt('', '洪庆庆', '修改锁用户信息', btnArray, function(e) {
+            if (e.index === 0) { //确定
+                console.log('确定')
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>
