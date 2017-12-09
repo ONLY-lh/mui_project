@@ -7,8 +7,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <title>授权分享</title>
-    <link rel="stylesheet" href="css/mui.min.css" />
-    <link rel="stylesheet" href="css/mui.picker.min.css" />
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/mui.picker.min.css" />
     <style type="text/css">
     .portrait-box {
         width: 100%;
@@ -64,9 +64,9 @@
             <input type="button" id="confirm-impower" value="确认授权" />
         </div>
     </div>
-    <script src="js/mui.js"></script>
-    <script src="js/mui.picker.min.js"></script>
-    <script src="js/lh.js"></script>
+    <script src="../js/mui.js"></script>
+    <script src="../js/mui.picker.min.js"></script>
+    <script src="../js/lh.js"></script>
     <script>
     // mui初始化
     mui.init({
@@ -76,37 +76,6 @@
     // 设置授权开始时间（当天）
     var impowerBegin = document.getElementById('impower-begin');
     impowerBegin.innerHTML = lh.timeFormate_date(new Date());
-
-    /*// 选择时间
-    var impowerEnd_beginDate, impowerBegin_endDate;
-    mui('.impower-box').on('tap', '.checktime', function() {
-        var _self = this;
-        var options = {
-            type: 'date',
-            beginDate: new Date()
-        };
-        var id = this.getAttribute('id');
-        if (id === 'impower-begin') { //开始时间
-            if (typeof impowerBegin_endDate !== 'undefined') {
-                options.endDate = new Date(impowerBegin_endDate);
-            }
-        } else if (id === 'impower-end') { //结束时间
-            if (typeof impowerEnd_beginDate !== 'undefined') {
-                options.beginDate = new Date(impowerEnd_beginDate);
-            }
-        }
-        _self.picker = new mui.DtPicker(options);
-        _self.picker.show(function(res) {
-            _self.innerHTML = res.text;
-            if (id === 'impower-begin') { //开始时间
-                impowerEnd_beginDate = res.text;
-            } else if (id === 'impower-end') { //结束时间
-                impowerBegin_endDate = res.text;
-            }
-            _self.picker.dispose();
-            _self.picker = null;
-        });
-    })*/
 
     // 选择开始时间
     var impowerEnd_beginDate, impowerBegin_endDate; //结束时间的开始时间，开始时间的结束时间
@@ -161,7 +130,7 @@
                 if (e.index === 1) { //确定
                     var password = e.value;
                     if (reg_password.test(password)) {
-                        mui.alert('您已授权“洪庆庆 1381381388【简爱】管理员 ”对【典匠锁】的使用权限，有效期 2017-11-02至2017-11-05；', '授权消息', function(e) {
+                        mui.alert('您已授权“小红 1381381388【简爱】管理员 ”对【典匠锁】的使用权限，有效期 2017-11-02至2017-11-05；', '授权消息', function(e) {
                             mui.toast('授权成功');
                             setTimeout(function() {
                                 window.location.href = 'impower-manage.html';

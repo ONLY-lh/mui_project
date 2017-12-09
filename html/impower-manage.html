@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <title>授权管理</title>
-    <link rel="stylesheet" href="css/mui.min.css" />
+    <link rel="stylesheet" href="../css/mui.min.css" />
     <style type="text/css">
     .phone,
     .time {
@@ -31,7 +31,7 @@
             <li class="mui-table-view-cell impower-item" data-id="0">
                 <div class="mui-clearfix above">
                     <div class="mui-pull-left mui-inline name">
-                        <h4>洪庆庆</h4>
+                        <h4>小红</h4>
                     </div>
                     <div class="mui-pull-right mui-inline phoneAndTime">
                         <p class="phone">
@@ -48,7 +48,7 @@
             <li class="mui-table-view-cell impower-item" data-id="1">
                 <div class="mui-clearfix above">
                     <div class="mui-pull-left mui-inline name">
-                        <h4>洪庆庆</h4>
+                        <h4>小红</h4>
                     </div>
                     <div class="mui-pull-right mui-inline phoneAndTime">
                         <p class="phone">
@@ -65,7 +65,7 @@
             <li class="mui-table-view-cell impower-item" data-id="0">
                 <div class="mui-clearfix above">
                     <div class="mui-pull-left mui-inline name">
-                        <h4>洪庆庆</h4>
+                        <h4>小红</h4>
                     </div>
                     <div class="mui-pull-right mui-inline phoneAndTime">
                         <p class="phone">
@@ -82,7 +82,7 @@
             <li class="mui-table-view-cell impower-item" data-id="2">
                 <div class="mui-clearfix above">
                     <div class="mui-pull-left mui-inline name">
-                        <h4>洪庆庆</h4>
+                        <h4>小红</h4>
                     </div>
                     <div class="mui-pull-right mui-inline phoneAndTime">
                         <p class="phone">
@@ -98,7 +98,7 @@
             </li>
         </ul>
     </div>
-    <script src="js/mui.js"></script>
+    <script src="../js/mui.js"></script>
     <script>
     // mui初始化
     mui.init({
@@ -109,7 +109,7 @@
     mui('.impower-list').on('tap', '.relieve-impower', function() {
         var id = this.parentNode.parentNode.getAttribute('data-id');
         var btnArray = ['取消', '确定'];
-        mui.confirm('您即将解除“洪庆庆 1381381388【简爱】管理员 ”对【典匠锁】的使用权限。解除后，对方将无此门锁使用权限。', '解除授权', btnArray, function(e) {
+        mui.confirm('您即将解除“小红 1381381388【简爱】管理员 ”对【典匠锁】的使用权限。解除后，对方将无此门锁使用权限。', '解除授权', btnArray, function(e) {
             if (e.index === 1) { //确定
                 mui.prompt('', '请输入账号密码', '输入密码', btnArray, function(e) {
                     if (e.index === 1) { //确定
